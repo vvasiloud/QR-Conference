@@ -18,7 +18,7 @@ class VenueCrudController extends CrudController {
 		|--------------------------------------------------------------------------
 		*/
         $this->crud->setModel("App\Models\Venue");
-        $this->crud->setRoute("admin/venue");
+        $this->crud->setRoute("admin/venues");
         $this->crud->setEntityNameStrings('venue', 'venues');
 
         /*

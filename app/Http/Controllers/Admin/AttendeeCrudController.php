@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Attendee;
+use App\Models\Venue;
+use App\Models\Auditorium;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -18,7 +21,7 @@ class AttendeeCrudController extends CrudController {
 		|--------------------------------------------------------------------------
 		*/
         $this->crud->setModel("App\Models\Attendee");
-        $this->crud->setRoute("admin/attendee");
+        $this->crud->setRoute("admin/attendees");
         $this->crud->setEntityNameStrings('attendee', 'attendees');
 
         /*

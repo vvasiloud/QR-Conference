@@ -18,7 +18,7 @@ class AuditoriumCrudController extends CrudController {
 		|--------------------------------------------------------------------------
 		*/
         $this->crud->setModel("App\Models\Auditorium");
-        $this->crud->setRoute("admin/auditorium");
+        $this->crud->setRoute("admin/auditoriums");
         $this->crud->setEntityNameStrings('auditorium', 'auditoriums');
 
         /*

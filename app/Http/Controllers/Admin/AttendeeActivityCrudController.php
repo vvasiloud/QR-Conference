@@ -18,7 +18,7 @@ class AttendeeActivityCrudController extends CrudController {
 		|--------------------------------------------------------------------------
 		*/
         $this->crud->setModel("App\Models\AttendeeActivity");
-        $this->crud->setRoute("admin/attendeeActivity");
+        $this->crud->setRoute("admin/attendees-activity");
         $this->crud->setEntityNameStrings('Attendee activity', 'Attendee activities');
 
         /*
@@ -36,13 +36,41 @@ class AttendeeActivityCrudController extends CrudController {
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
+        // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
-        
+  
+		$this->crud->addColumn([
+						'label' => 'Attendee',
+						'type' => 'Label',
+						'name' => 'attendee',
+						'entity' => 'attendee',
+						'attribute' => 'name',
+						'model' => "\App\Models\Attendee",
+					]);
+					
+		$this->crud->addColumn([
+						'label' => 'Venue',
+						'type' => 'Label',
+						'name' => 'venue_id',
+						'entity' => 'venue',
+						'attribute' => 'name',
+						'model' => "\App\Models\Venue",
+					]);
+					
+		$this->crud->addColumn([
+						'label' => 'Auditorium',
+						'type' => 'Label',
+						'name' => 'auditorium_id',
+						'entity' => 'auditorium',
+						'attribute' => 'name',
+						'model' => "\App\Models\Auditorium",
+					]);		
+					
+		$this->crud->addColumn('created_at');			
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
