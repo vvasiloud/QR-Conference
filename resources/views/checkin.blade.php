@@ -1,14 +1,13 @@
-<html>
+@include('partials.head')
     <body>
 		<div class="container">
 			@if (Auth::check())
-				<?php echo $venue_id.' '.$attendee_id?>
+				<div class="col-xs-12 text-xs-center">
+					<p class="user--checkin"><?php echo $attendee_action . ' for ' . $attendee_name . ' (#' . $attendee_id . ') <br>' . ' in '.$venue_name?></p>
+				</div>
 			@else
-                <div class="col-xs-12 text-xs-center">
-					<img class="img-fluid" style="width: 300px;" src="{{url('/images/qr.jpg')}}" alt="QR Scan"/>
-					<p> Please login <br> before scanning qr code </p>
-                </div>
+				@include('partials.login-notice');
 			@endif
 		</div>	
     </body>
-</html>
+@include('partials.footer')
