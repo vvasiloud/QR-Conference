@@ -19,7 +19,7 @@ class AttendeeActivity extends Model
 	protected $primaryKey = 'id';
 	// public $timestamps = false;
 	// protected $guarded = ['id'];
-	// protected $fillable = [];
+	protected $fillable = ['attendee_id','action','venue_id','auditorium_id'];
 	// protected $hidden = [];
     // protected $dates = [];
 
@@ -29,12 +29,30 @@ class AttendeeActivity extends Model
 	|--------------------------------------------------------------------------
 	*/
 
+	public function getNameAttribute(){
+		return $this->attendee->name;
+	}
+	
 	/*
 	|--------------------------------------------------------------------------
 	| RELATIONS
 	|--------------------------------------------------------------------------
 	*/
 
+	public function attendee()
+    {
+        return $this->belongsTo('App\Models\Attendee', 'attendee_id');
+    }
+	
+	public function venue()
+    {
+        return $this->belongsTo('App\Models\Venue', 'venue_id');
+    }
+	
+	public function auditorium()
+    {
+        return $this->belongsTo('App\Models\Auditorium', 'auditorium_id');
+    }
 	/*
 	|--------------------------------------------------------------------------
 	| SCOPES
