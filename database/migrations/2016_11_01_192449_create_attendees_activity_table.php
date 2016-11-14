@@ -14,6 +14,7 @@ class CreateAttendeesActivityTable extends Migration
     public function up()
     {
         Schema::create('activity_attendees', function (Blueprint $table) {
+			$table->increments('id');
             $table->integer('attendee_id')->unsigned();
 			$table->integer('venue_id')->unsigned();
             $table->integer('auditorium_id')->unsigned();
@@ -35,7 +36,7 @@ class CreateAttendeesActivityTable extends Migration
 				
 			$table->string('action');
 				
-            $table->primary(['attendee_id', 'venue_id', 'auditorium_id']);
+            $table->primary(['id','attendee_id', 'venue_id', 'auditorium_id']);
             $table->timestamps();
         });
     }
