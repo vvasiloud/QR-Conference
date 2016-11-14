@@ -17,23 +17,12 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
     CRUD::resource('menu-item', 'MenuItemCrudController');
+	CRUD::resource('venues', 'VenueCrudController');
+	CRUD::resource('attendees', 'AttendeeCrudController');
+	CRUD::resource('attendees-activity', 'AttendeeActivityCrudController');
+	CRUD::resource('auditoriums', 'AuditoriumCrudController');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
-    CRUD::resource('attendees', 'AttendeeCrudController');
-});
-
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
-    CRUD::resource('attendees-activity', 'AttendeeActivityCrudController');
-});
-
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
-    CRUD::resource('venues', 'VenueCrudController');
-});
-
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
-    CRUD::resource('auditoriums', 'AuditoriumCrudController');
-});
 
 Route::get('/checkin/{venue_id}/{attendee_id}', [
     'as'   => 'venue.checkin',
