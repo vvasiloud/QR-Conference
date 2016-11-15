@@ -44,33 +44,34 @@ class AttendeeActivityCrudController extends CrudController {
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
   
 		$this->crud->addColumn([
-						'label' => 'Attendee',
-						'type' => 'Label',
-						'name' => 'attendee',
-						'entity' => 'attendee',
-						'attribute' => 'name',
-						'model' => "\App\Models\Attendee",
-					]);
+			'label' => 'Attendee',
+			'type' => 'Label',
+			'name' => 'attendee_name',
+			'entity' => 'attendee',
+			'attribute' => 'name',
+			'model' => "\App\Models\Attendee",
+		]);
 					
 		$this->crud->addColumn([
-						'label' => 'Venue',
-						'type' => 'Label',
-						'name' => 'venue_id',
-						'entity' => 'venue',
-						'attribute' => 'name',
-						'model' => "\App\Models\Venue",
-					]);
+			'label' => 'Venue',
+			'type' => 'Label',
+			'name' => 'venue_name',
+			'entity' => 'venue',
+			'attribute' => 'name',
+			'model' => "\App\Models\Venue",
+		]);
 					
 		$this->crud->addColumn([
-						'label' => 'Auditorium',
-						'type' => 'Label',
-						'name' => 'auditorium_id',
-						'entity' => 'auditorium',
-						'attribute' => 'name',
-						'model' => "\App\Models\Auditorium",
-					]);		
+			'label' => 'Auditorium',
+			'type' => 'Label',
+			'name' => 'auditorium_name',
+			'entity' => 'auditorium',
+			'attribute' => 'name',
+			'model' => "\App\Models\Auditorium",
+		]);		
 					
-		$this->crud->addColumn('created_at');			
+		$this->crud->addColumn('created_at');	
+		$this->crud->removeColumns(['attendee_id','venue_id', 'auditorium_id']);		
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function

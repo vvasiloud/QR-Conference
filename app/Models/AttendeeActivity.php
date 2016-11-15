@@ -29,9 +29,17 @@ class AttendeeActivity extends Model
 	|--------------------------------------------------------------------------
 	*/
 
-	public function getNameAttribute(){
+	public function getAttendeeNameAttribute(){
 		return $this->attendee->name;
 	}
+
+	public function getVenueNameAttribute(){
+		return $this->venue->name;
+	}
+
+	public function getAuditoriumNameAttribute(){
+		return $this->auditorium->name;
+	}	
 	
 	/*
 	|--------------------------------------------------------------------------

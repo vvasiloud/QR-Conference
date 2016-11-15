@@ -35,6 +35,12 @@ class Attendee extends Model
 	|--------------------------------------------------------------------------
 	*/
 
+	public function activity()
+    {
+        return $this->hasMany('App\Models\AttendeeActivity', 'id');
+    }
+	
+	
 	/*
 	|--------------------------------------------------------------------------
 	| SCOPES
