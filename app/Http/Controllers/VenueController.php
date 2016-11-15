@@ -18,8 +18,15 @@ class VenueController extends Controller
 
     }
 	
-	public function checkin($venue_id, $attendee_id){
+	public function checkin($venue, $attendee){
 		$action = '';
+
+		$attendee_id = $attendee->id;
+		$attendeeName = $attendee->name;
+		$venue_id = $venue->id;
+		$venueName = $venue->name;
+		//$auditorium_id = $auditorium->id;
+		//$auditoriumName = $auditorium->name;
 
 		$lastActivity = AttendeeActivity::where('attendee_id', $attendee_id)->where('venue_id', $venue_id)->orderBy('updated_at', 'desc')->first();
 		if($lastActivity){
@@ -33,17 +40,12 @@ class VenueController extends Controller
 		$attendeeActivity->action = ($action != '') ? $action : 'checkin';
         $attendeeActivity->save();
 		
-		$attendeeName = Attendee::find($attendee_id)->name;
-		//$auditoriumName = Auditorium::find($auditorium_id)->name;
-		$venueName = Venue::find($venue_id)->name;
-		
-		$data['venue_id'] = $venue_id;
 		$data['attendee_id'] = $attendee_id;		
 		$data['attendee_name'] = $attendeeName;
 		$data['attendee_action'] = $action;
-		//$data['auditorium_name'] = $auditoriumName;
+		$data['venue_id'] = $venue_id;
 		$data['venue_name'] = $venueName;
-
+		//$data['auditorium_name'] = $auditoriumName;
 		
 		return view('checkin', $data);
 	}

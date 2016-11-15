@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Attendee as Attendee;
+use App\Models\Venue as Venue;
+use App\Models\Auditorium as Auditorium;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -26,6 +29,10 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+		Route::model('attendee', Attendee::class);
+		Route::model('venue', Venue::class);
+		Route::model('auditorium', Auditorium::class);
+
     }
 
     /**

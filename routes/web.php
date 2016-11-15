@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
 });
 
 
-Route::get('/checkin/{venue_id}/{attendee_id}', [
+Route::get('/checkin/{venue}/{attendee}', [
     'as'   => 'venue.checkin',
     'uses' => 'VenueController@checkin'
-]);
+],function (App\Venue $venue,App\Attendee $attendee){});
