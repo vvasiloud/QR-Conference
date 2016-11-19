@@ -28,3 +28,8 @@ Route::get('/checkin/{venue}/{attendee}', [
     'as'   => 'venue.checkin',
     'uses' => 'VenueController@checkin'
 ],function (App\Venue $venue,App\Attendee $attendee){});
+
+Route::get('/masscheckout/{venue}', [
+    'as'   => 'venue.massCheckout',
+    'uses' => 'VenueController@massCheckout'
+],function (App\Venue $venue){});

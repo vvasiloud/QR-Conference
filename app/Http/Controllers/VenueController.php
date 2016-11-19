@@ -5,6 +5,7 @@ use App\Models\AttendeeActivity;
 use App\Models\Attendee;
 use App\Models\Venue;
 use App\Models\Auditorium;
+use DB;
 
 class VenueController extends Controller
 {
@@ -48,5 +49,35 @@ class VenueController extends Controller
 		//$data['auditorium_name'] = $auditoriumName;
 		
 		return view('checkin', $data);
+	}
+	
+	public function massCheckout($venue){
+		$venue_id = $venue->id;
+		$data =[];
+		$attendeeArray = [];
+		
+		$lastAttendeeActivities = AttendeeActivity::select(DB::raw('MAX(updated_at) AS updated_at'), 'attendee_id','action', DB::raw('MAX(id) AS id'))
+								->where('venue_id', $venue_id)
+								->groupBy('attendee_id','action')
+								->orderBy('attendee_id','asc')->orderBy('updated_at','asc')
+								->get();
+		$keyed = $lastAttendeeActivities->keyBy('attendee_id');
+
+		foreach ($keyed as $attendee):
+			if($attendee->action == 'checkin'):
+			    $attendeeActivity = new AttendeeActivity;
+				$attendeeActivity->attendee_id = $attendee->attendee_id;
+				$attendeeActivity->venue_id = $venue_id;
+				$attendeeActivity->auditorium_id = 1;
+				$attendeeActivity->action = 'checkout';
+				$attendeeActivity->save();
+				$attendeeArray[] = $attendeeActivity;
+			endif;
+		endforeach;
+
+		if($attendeeArray){
+			$data['checkoutAttendees'] = $attendeeArray;
+		}
+		return view('masscheckout', $data);
 	}
 }

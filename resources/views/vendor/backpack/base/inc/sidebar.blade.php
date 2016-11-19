@@ -34,6 +34,7 @@
 					<ul class="treeview-menu">
 						<li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/attendees') }}"><i class="fa fa-flag-checkered"></i> List</a></li>
 						<li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/attendees-activity') }}"><i class="fa fa-language"></i> Activity</a></li>
+						<li><a href="{{ url('/masscheckout/1') }}"><i class="fa fa-language"></i> Mass checkout</a></li>
 					</ul>
 				</li>
 				<li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/venues') }}"><i class="fa fa-language"></i> Venues</a></li>

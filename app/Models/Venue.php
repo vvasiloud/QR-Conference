@@ -34,7 +34,16 @@ class Venue extends Model
 	| RELATIONS
 	|--------------------------------------------------------------------------
 	*/
-
+	public function activity()
+    {
+        return $this->hasMany('App\Models\AttendeeActivity', 'id');
+    }
+	
+	public function attendee()
+    {
+        return $this->hasMany('App\Models\Attendee', 'id');
+    }
+	
 	/*
 	|--------------------------------------------------------------------------
 	| SCOPES
